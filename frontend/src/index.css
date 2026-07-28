@@ -1,0 +1,780 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 25% 10%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 10%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 10%;
+    
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 195 100% 50%;
+    --secondary-foreground: 220 25% 10%;
+    
+    --muted: 220 15% 90%;
+    --muted-foreground: 220 10% 40%;
+    
+    --accent: 330 85% 60%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 210 100% 50%;
+    
+    --radius: 1rem;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(210 100% 50%) 0%, hsl(195 100% 50%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(330 85% 60%) 0%, hsl(25 95% 60%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(210 100% 50%) 0%, hsl(195 100% 50%) 50%, hsl(330 85% 60%) 100%);
+    
+    /* Shadows & Effects */
+    --shadow-glow: 0 0 40px hsl(210 100% 50% / 0.3);
+    --shadow-card: 0 8px 32px hsl(220 25% 5% / 0.1);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .dark {
+    --background: 220 25% 10%;
+    --foreground: 220 10% 98%;
+    
+    --card: 220 20% 14%;
+    --card-foreground: 220 10% 98%;
+    
+    --popover: 220 20% 14%;
+    --popover-foreground: 220 10% 98%;
+    
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 195 100% 50%;
+    --secondary-foreground: 220 25% 10%;
+    
+    --muted: 220 15% 25%;
+    --muted-foreground: 220 10% 65%;
+    
+    --accent: 330 85% 60%;
+    --accent-foreground: 220 10% 98%;
+    
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 220 10% 98%;
+    
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 210 100% 50%;
+  }
+  
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(210 100% 50% / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 30px hsl(210 100% 50% / 0.5);
+    }
+  }
+  
+  .bg-animated-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(210 100% 50%),
+      hsl(195 100% 50%),
+      hsl(330 85% 60%),
+      hsl(210 100% 50%)
+    );
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+  
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .bg-gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 bg-gray-600 text-white rounded-lg font-medium hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900;
+  }
+  
+  .btn-blue {
+    @apply px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900;
+  }
+  
+  .btn-outline {
+    @apply px-6 py-3 border border-gray-300 dark:border-slate-600 text-gray-700 dark:text-slate-300 rounded-lg font-medium hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900;
+  }
+  
+  .input {
+    @apply w-full px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+  }
+  
+  /* From Uiverse.io by andrew-manzyk */
+  .loader {
+    --fill-color: #1e88e5;
+    --shine-color: #1e88e533;
+    transform: scale(0.5); /* You can change the size */
+    width: 100px;
+    height: auto;
+    position: relative;
+    filter: drop-shadow(0 0 10px var(--shine-color));
+  }
+  
+  .loader #pegtopone {
+    position: absolute;
+    animation: flowe-one 1s linear infinite;
+  }
+  
+  .loader #pegtoptwo {
+    position: absolute;
+    opacity: 0;
+    transform: scale(0) translateY(-200px) translateX(-100px);
+    animation: flowe-two 1s linear infinite;
+    animation-delay: 0.3s;
+  }
+  
+  .loader #pegtopthree {
+    position: absolute;
+    opacity: 0;
+    transform: scale(0) translateY(-200px) translateX(100px);
+    animation: flowe-three 1s linear infinite;
+    animation-delay: 0.6s;
+  }
+  
+  .loader svg g path:first-child {
+    fill: var(--fill-color);
+  }
+  
+  @keyframes flowe-one {
+    0% {
+      transform: scale(0.5) translateY(-200px);
+      opacity: 0;
+    }
+    25% {
+      transform: scale(0.75) translateY(-100px);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1) translateY(0px);
+      opacity: 1;
+    }
+    75% {
+      transform: scale(0.5) translateY(50px);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0) translateY(100px);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes flowe-two {
+    0% {
+      transform: scale(0.5) rotateZ(-10deg) translateY(-200px) translateX(-100px);
+      opacity: 0;
+    }
+    25% {
+      transform: scale(1) rotateZ(-5deg) translateY(-100px) translateX(-50px);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1) rotateZ(0deg) translateY(0px) translateX(-25px);
+      opacity: 1;
+    }
+    75% {
+      transform: scale(0.5) rotateZ(5deg) translateY(50px) translateX(0px);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0) rotateZ(10deg) translateY(100px) translateX(25px);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes flowe-three {
+    0% {
+      transform: scale(0.5) rotateZ(10deg) translateY(-200px) translateX(100px);
+      opacity: 0;
+    }
+    25% {
+      transform: scale(1) rotateZ(5deg) translateY(-100px) translateX(50px);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1) rotateZ(0deg) translateY(0px) translateX(25px);
+      opacity: 1;
+    }
+    75% {
+      transform: scale(0.5) rotateZ(-5deg) translateY(50px) translateX(0px);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0) rotateZ(-10deg) translateY(100px) translateX(-25px);
+      opacity: 0;
+    }
+  }
+  
+  @layer base {
+    * {
+      border-color: hsl(var(--border));
+    }
+    
+    body {
+      @apply bg-background text-foreground;
+    }
+  }
+}
+
+/* From Uiverse.io by _7754 */
+.feedback {
+  --normal: #414052;
+  --normal-shadow: #313140;
+  --normal-shadow-top: #4c4b60;
+  --normal-mouth: #2e2e3d;
+  --normal-eye: #282734;
+  --active: #f8da69;
+  --active-shadow: #f4b555;
+  --active-shadow-top: #fff6d3;
+  --active-mouth: #f05236;
+  --active-eye: #313036;
+  --active-tear: #76b5e7;
+  --active-shadow-angry: #e94f1d;
+  --hover: #454456;
+  --hover-shadow-top: #59586b;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+.feedback label {
+  position: relative;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+.feedback label:not(:last-child) {
+  margin-right: 20px;
+}
+.feedback label input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+  display: block;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--sb, var(--normal));
+  box-shadow:
+    inset 3px -3px 4px var(--sh, var(--normal-shadow)),
+    inset -1px 1px 2px var(--sht, var(--normal-shadow-top));
+  transition:
+    background 0.4s,
+    box-shadow 0.4s,
+    transform 0.3s;
+  -webkit-tap-highlight-color: transparent;
+}
+.feedback label div {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  transform: perspective(240px) translateZ(4px);
+}
+.feedback label div svg,
+.feedback label div:before,
+.feedback label div:after {
+  display: block;
+  position: absolute;
+  left: var(--l, 9px);
+  top: var(--t, 13px);
+  width: var(--w, 8px);
+  height: var(--h, 1px);
+  transform: rotate(var(--r, 0deg)) scale(var(--sc, 1)) translateZ(0);
+}
+.feedback label div svg {
+  fill: none;
+  stroke: var(--s);
+  stroke-width: 1.5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.4s;
+}
+.feedback label div svg.eye {
+  --s: var(--e, var(--normal-eye));
+  --t: 17px;
+  --w: 7px;
+  --h: 4px;
+}
+.feedback label div svg.eye.right {
+  --l: 23px;
+}
+.feedback label div svg.mouth {
+  --s: var(--m, var(--normal-mouth));
+  --l: 11px;
+  --t: 23px;
+  --w: 18px;
+  --h: 7px;
+}
+.feedback label div:before,
+.feedback label div:after {
+  content: "";
+  z-index: var(--zi, 1);
+  border-radius: var(--br, 1px);
+  background: var(--b, var(--e, var(--normal-eye)));
+  transition: background 0.4s;
+}
+.feedback label.angry {
+  --step-1-rx: -24deg;
+  --step-1-ry: 20deg;
+  --step-2-rx: -24deg;
+  --step-2-ry: -20deg;
+}
+.feedback label.angry div:before {
+  --r: 20deg;
+}
+.feedback label.angry div:after {
+  --l: 23px;
+  --r: -20deg;
+}
+.feedback label.angry div svg.eye {
+  stroke-dasharray: 4.55;
+  stroke-dashoffset: 8.15;
+}
+.feedback label.angry input:checked {
+  -webkit-animation: angry 1s linear;
+  animation: angry 1s linear;
+}
+.feedback label.angry input:checked + div:before {
+  --middle-y: -2px;
+  --middle-r: 22deg;
+  -webkit-animation: toggle 0.8s linear forwards;
+  animation: toggle 0.8s linear forwards;
+}
+.feedback label.angry input:checked + div:after {
+  --middle-y: 1px;
+  --middle-r: -18deg;
+  -webkit-animation: toggle 0.8s linear forwards;
+  animation: toggle 0.8s linear forwards;
+}
+.feedback label.sad {
+  --step-1-rx: 20deg;
+  --step-1-ry: -12deg;
+  --step-2-rx: -18deg;
+  --step-2-ry: 14deg;
+}
+.feedback label.sad div:before,
+.feedback label.sad div:after {
+  --b: var(--active-tear);
+  --sc: 0;
+  --w: 5px;
+  --h: 5px;
+  --t: 15px;
+  --br: 50%;
+}
+.feedback label.sad div:after {
+  --l: 25px;
+}
+.feedback label.sad div svg.eye {
+  --t: 16px;
+}
+.feedback label.sad div svg.mouth {
+  --t: 24px;
+  stroke-dasharray: 9.5;
+  stroke-dashoffset: 33.25;
+}
+.feedback label.sad input:checked + div:before,
+.feedback label.sad input:checked + div:after {
+  -webkit-animation: tear 0.6s linear forwards;
+  animation: tear 0.6s linear forwards;
+}
+.feedback label.ok {
+  --step-1-rx: 4deg;
+  --step-1-ry: -22deg;
+  --step-1-rz: 6deg;
+  --step-2-rx: 4deg;
+  --step-2-ry: 22deg;
+  --step-2-rz: -6deg;
+}
+.feedback label.ok div:before {
+  --l: 12px;
+  --t: 17px;
+  --h: 4px;
+  --w: 4px;
+  --br: 50%;
+  box-shadow: 12px 0 0 var(--e, var(--normal-eye));
+}
+.feedback label.ok div:after {
+  --l: 13px;
+  --t: 26px;
+  --w: 14px;
+  --h: 2px;
+  --br: 1px;
+  --b: var(--m, var(--normal-mouth));
+}
+.feedback label.ok input:checked + div:before {
+  --middle-s-y: 0.35;
+  -webkit-animation: toggle 0.2s linear forwards;
+  animation: toggle 0.2s linear forwards;
+}
+.feedback label.ok input:checked + div:after {
+  --middle-s-x: 0.5;
+  -webkit-animation: toggle 0.7s linear forwards;
+  animation: toggle 0.7s linear forwards;
+}
+.feedback label.good {
+  --step-1-rx: -14deg;
+  --step-1-rz: 10deg;
+  --step-2-rx: 10deg;
+  --step-2-rz: -8deg;
+}
+.feedback label.good div:before {
+  --b: var(--m, var(--normal-mouth));
+  --w: 5px;
+  --h: 5px;
+  --br: 50%;
+  --t: 22px;
+  --zi: 0;
+  opacity: 0.5;
+  box-shadow: 16px 0 0 var(--b);
+  filter: blur(2px);
+}
+.feedback label.good div:after {
+  --sc: 0;
+}
+.feedback label.good div svg.eye {
+  --t: 15px;
+  --sc: -1;
+  stroke-dasharray: 4.55;
+  stroke-dashoffset: 8.15;
+}
+.feedback label.good div svg.mouth {
+  --t: 22px;
+  --sc: -1;
+  stroke-dasharray: 13.3;
+  stroke-dashoffset: 23.75;
+}
+.feedback label.good input:checked + div svg.mouth {
+  --middle-y: 1px;
+  --middle-s: -1;
+  -webkit-animation: toggle 0.8s linear forwards;
+  animation: toggle 0.8s linear forwards;
+}
+.feedback label.happy div {
+  --step-1-rx: 18deg;
+  --step-1-ry: 24deg;
+  --step-2-rx: 18deg;
+  --step-2-ry: -24deg;
+}
+.feedback label.happy div:before {
+  --sc: 0;
+}
+.feedback label.happy div:after {
+  --b: var(--m, var(--normal-mouth));
+  --l: 11px;
+  --t: 23px;
+  --w: 18px;
+  --h: 8px;
+  --br: 0 0 8px 8px;
+}
+.feedback label.happy div svg.eye {
+  --t: 14px;
+  --sc: -1;
+}
+.feedback label.happy input:checked + div:after {
+  --middle-s-x: 0.95;
+  --middle-s-y: 0.75;
+  -webkit-animation: toggle 0.8s linear forwards;
+  animation: toggle 0.8s linear forwards;
+}
+.feedback label input:checked {
+  --sb: var(--active);
+  --sh: var(--active-shadow);
+  --sht: var(--active-shadow-top);
+}
+.feedback label input:checked + div {
+  --m: var(--active-mouth);
+  --e: var(--active-eye);
+  -webkit-animation: shake 0.8s linear forwards;
+  animation: shake 0.8s linear forwards;
+}
+.feedback label input:not(:checked):hover {
+  --sb: var(--hover);
+  --sht: var(--hover-shadow-top);
+}
+.feedback label input:not(:checked):active {
+  transform: scale(0.925);
+}
+.feedback label input:not(:checked):active + div {
+  transform: scale(0.925);
+}
+.feedback label:hover {
+  transform: scale(1.08);
+}
+
+@-webkit-keyframes shake {
+  30% {
+    transform: perspective(240px) rotateX(var(--step-1-rx, 0deg))
+      rotateY(var(--step-1-ry, 0deg)) rotateZ(var(--step-1-rz, 0deg))
+      translateZ(10px);
+  }
+  60% {
+    transform: perspective(240px) rotateX(var(--step-2-rx, 0deg))
+      rotateY(var(--step-2-ry, 0deg)) rotateZ(var(--step-2-rz, 0deg))
+      translateZ(10px);
+  }
+  100% {
+    transform: perspective(240px) translateZ(4px);
+  }
+}
+
+@keyframes shake {
+  30% {
+    transform: perspective(240px) rotateX(var(--step-1-rx, 0deg))
+      rotateY(var(--step-1-ry, 0deg)) rotateZ(var(--step-1-rz, 0deg))
+      translateZ(10px);
+  }
+  60% {
+    transform: perspective(240px) rotateX(var(--step-2-rx, 0deg))
+      rotateY(var(--step-2-ry, 0deg)) rotateZ(var(--step-2-rz, 0deg))
+      translateZ(10px);
+  }
+  100% {
+    transform: perspective(240px) translateZ(4px);
+  }
+}
+@-webkit-keyframes tear {
+  0% {
+    opacity: 0;
+    transform: translateY(-2px) scale(0) translateZ(0);
+  }
+  50% {
+    transform: translateY(12px) scale(0.6, 1.2) translateZ(0);
+  }
+  20%,
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(24px) translateX(4px) rotateZ(-30deg) scale(0.7, 1.1)
+      translateZ(0);
+  }
+}
+@keyframes tear {
+  0% {
+    opacity: 0;
+    transform: translateY(-2px) scale(0) translateZ(0);
+  }
+  50% {
+    transform: translateY(12px) scale(0.6, 1.2) translateZ(0);
+  }
+  20%,
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(24px) translateX(4px) rotateZ(-30deg) scale(0.7, 1.1)
+      translateZ(0);
+  }
+}
+@-webkit-keyframes toggle {
+  50% {
+    transform: translateY(var(--middle-y, 0))
+      scale(
+        var(--middle-s-x, var(--middle-s, 1)),
+        var(--middle-s-y, var(--middle-s, 1))
+      )
+      rotate(var(--middle-r, 0deg));
+  }
+}
+@keyframes toggle {
+  50% {
+    transform: translateY(var(--middle-y, 0))
+      scale(
+        var(--middle-s-x, var(--middle-s, 1)),
+        var(--middle-s-y, var(--middle-s, 1))
+      )
+      rotate(var(--middle-r, 0deg));
+  }
+}
+@-webkit-keyframes angry {
+  40% {
+    background: var(--active);
+  }
+  45% {
+    box-shadow:
+      inset 3px -3px 4px var(--active-shadow),
+      inset 0 8px 10px var(--active-shadow-angry);
+  }
+}
+@keyframes angry {
+  40% {
+    background: var(--active);
+  }
+  45% {
+    box-shadow:
+      inset 3px -3px 4px var(--active-shadow),
+      inset 0 8px 10px var(--active-shadow-angry);
+  }
+}
+
+/* From Uiverse.io by aguerquin */
+.rating > label {
+  margin-right: 4px;
+}
+
+.rating:not(:checked) > input {
+  display: none;
+}
+
+.rating:not(:checked) > label {
+  float: right;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.rating:not(:checked) > label > svg {
+  fill: #666;
+  transition: fill 0.3s ease;
+}
+
+.rating > input:checked ~ label > svg {
+  fill: #ffa723;
+}
+
+.rating:not(:checked) > label:hover ~ label > svg,
+.rating:not(:checked) > label:hover > svg {
+  fill: #ff9e0b;
+}
+
+#star1:hover ~ label > svg,
+#star1:hover > svg {
+  fill: #a23c3c !important;
+}
+
+#star2:hover ~ label > svg,
+#star2:hover > svg {
+  fill: #99542d !important;
+}
+
+#star3:hover ~ label > svg,
+#star3:hover > svg {
+  fill: #9f7e18 !important;
+}
+
+#star4:hover ~ label > svg,
+#star4:hover > svg {
+  fill: #22885e !important;
+}
+
+#star5:hover ~ label > svg,
+#star5:hover > svg {
+  fill: #7951ac !important;
+}
+
+#star1:checked ~ label > svg {
+  fill: #ef4444;
+}
+
+#star2:checked ~ label > svg {
+  fill: #e06c2b;
+}
+
+#star3:checked ~ label > svg {
+  fill: #eab308;
+}
+
+#star4:checked ~ label > svg {
+  fill: #19c37d;
+}
+
+#star5:checked ~ label > svg {
+  fill: #ab68ff;
+}

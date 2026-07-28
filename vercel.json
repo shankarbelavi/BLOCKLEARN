@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "public": false,
+  "github": {
+    "silent": true
+  },
+  "builds": [
+    {
+      "src": "api/[[...all]].js",
+      "use": "@vercel/node"
+<<<<<<< HEAD
+=======
+    },
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+>>>>>>> 7e14de0 (deployement 8)
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/[[...all]].js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
