@@ -217,7 +217,7 @@ BlockLearn/
 ## Clone Repository
 
 ```bash
-git clone https://github.com/your-username/BlockLearn.git
+git clone https://github.com/shankarbelavi/BlockLearn.git
 ```
 
 ---
@@ -354,31 +354,6 @@ npm start
 * User Management
 * Reports
 * Moderation
-
----
-
-# 📸 Screenshots
-
-> Add screenshots of the following pages.
-
-* 🏠 Landing Page
-* 🔐 Login
-* 📋 Dashboard
-* 👤 Profile
-* 💬 Chat
-* 🎥 Video Calling
-* ⭐ Feedback
-* ⚙ Admin Dashboard
-
-Example:
-
-```markdown
-![Landing Page](screenshots/home.png)
-
-![Dashboard](screenshots/dashboard.png)
-
-![Video Call](screenshots/video.png)
-```
 
 ---
 
